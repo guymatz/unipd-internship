@@ -14,14 +14,10 @@ import json
 import math
 import numbers
 import numpy as np
-
+# import numpy.typing as npt
 from utils import _calc_ibi
 
-# import numpy.typing as npt
 
-
-###  WHY DOESN"T mypy ACCEPT THIS?!?!?
-# def max_interval(spike_times: list[float] | npt.NDArray[np.float64],
 # pylint: disable=too-many-positional-arguments,too-many-arguments
 def max_interval(
     spike_times: list[float],
