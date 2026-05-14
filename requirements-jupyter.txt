@@ -1,0 +1,11 @@
+-r requirements-dev.txt
+colormap
+community
+infomap
+ipywidgets
+jupyter
+jupyter_contrib_nbextensions
+jupyterlab
+matplotlib
+notebook<7
+seaborn

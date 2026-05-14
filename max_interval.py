@@ -14,6 +14,7 @@ import json
 import math
 import numbers
 import numpy as np
+
 # import numpy.typing as npt
 from utils import _calc_ibi
 
