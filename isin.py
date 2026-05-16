@@ -32,14 +32,14 @@ def _filter_within_isin(
 ) -> list[list[float]]:
     """Get a List of spikes that fit ISIn criteria"""
 
-    spike_burst_number: list[float] = [-1 for _ in range(len(spike_train))]
+    spike_burst_number: list[int] = [-1 for _ in range(len(spike_train))]
 
     in_burst: bool = False
     burst_number_iterator: int = 0
     burst_number_assigned: int = -1
     burst_length: int = 0
 
-    criteria: list[bool] = [min(x) < isin for x in delta_times]
+    criteria: list[bool] = [min(x) < isin for x in delta_times]  # type: ignore[call-overload]
 
     for idx, _ in enumerate(spike_train):
         if not in_burst:
