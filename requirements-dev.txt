@@ -1,8 +1,10 @@
 -r requirements.txt
 black
+coverage
 flake8
 ipython
 mypy
 pre-commit
 pylint
 pytest
+pytest-cov

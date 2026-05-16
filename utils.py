@@ -22,10 +22,7 @@ def _calc_ibi(spikes: list[float], bursts: list[list[float]]) -> list[float | No
         end_spikes
     ), "start_spikes and end_spikes need to be the same length"
 
-    ibis = [
-        spikes[start_spikes[n]] - spikes[end_spikes[n]]
-        for n in range(len(start_spikes))
-    ]
+    ibis = [spikes[start_spikes[n]] - spikes[end_spikes[n]] for n in range(len(start_spikes))]
     # Prepend a None to the ibis list, since the first burst has no ibi
     ibis.insert(0, None)
     return ibis

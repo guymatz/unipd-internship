@@ -199,9 +199,7 @@ def _quality_control(
     # Normalize spikes
     spikes = [s / sampling_rate for s in spikes]
 
-    burst_lens: list[float] = [
-        bursts[n][1] - bursts[n][0] + 1 for n in range(len(bursts))
-    ]
+    burst_lens: list[float] = [bursts[n][1] - bursts[n][0] + 1 for n in range(len(bursts))]
     burst_durns: list[float] = [
         spikes[bursts[n][1] - 1]  # type: ignore[call-overload]
         - spikes[bursts[n][0] - 1]  # type: ignore[call-overload]
@@ -224,17 +222,14 @@ def _quality_control(
     # Compute mean ISIs
     # recompute len & durn
     burst_lens = [
-        selected_bursts[n][1] - selected_bursts[n][0] + 1
-        for n in range(len(selected_bursts))
+        selected_bursts[n][1] - selected_bursts[n][0] + 1 for n in range(len(selected_bursts))
     ]
     burst_durns = [
         spikes[selected_bursts[n][1] - 1]  # type: ignore[call-overload]
         - spikes[selected_bursts[n][0] - 1]  # type: ignore[call-overload]
         for n in range(len(selected_bursts))
     ]
-    mean_isis = [
-        burst_durns[n] / (burst_lens[n] - 1) for n in range(len(selected_bursts))
-    ]
+    mean_isis = [burst_durns[n] / (burst_lens[n] - 1) for n in range(len(selected_bursts))]
 
     # Recompute IBI (since some bursts may have just been deleted)
     ibis: list[float] = []
@@ -264,7 +259,7 @@ if __name__ == "__main__":
     MIN_SPIKES_IN_BURST: int = 3
 
     SPIKE_TRAIN: list[float] = []
-    with open("tests/data/cult.json", "r", encoding="utf-8") as f:
+    with open("tests/data/alz_ab_m_culture_c1r1.json", "r", encoding="utf-8") as f:
         SPIKE_TRAIN = json.load(f)
 
     # bursts: list[list[float]] = max_interval( SPIKE_TRAIN, MAX_BEGIN_ISI, MAX_END_ISI,
@@ -281,6 +276,6 @@ if __name__ == "__main__":
         MIN_BURST_DURATION,
     )
     # breakpoint()
-    print(len(detected_bursts))
-    print(detected_bursts[0])
-    print(detected_bursts[-1])
+    print(f"Number of Detected Bursts: {len(detected_bursts)}")
+    print(f"First Burst: {detected_bursts[0]}")
+    print(f"Last Burst: {detected_bursts[-1]}")
