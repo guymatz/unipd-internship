@@ -1,10 +1,12 @@
 -r requirements.txt
+actionlint
 black
-coverage
 flake8
 ipython
+json-linter
 mypy
 pre-commit
 pylint
 pytest
 pytest-cov
+yamllint

@@ -4,7 +4,7 @@ name: pre-commit
 env:
   BRANCH_NAME: ${{ github.head_ref || github.ref_name }}
 
-on:
+on:  # yamllint disable-line rule:truthy
   push:
   # pull_request:
 
