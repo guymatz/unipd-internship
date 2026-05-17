@@ -4,11 +4,20 @@
 repos:
   - repo: local
     hooks:
-      - id: pytest
-        name: pytest
-        entry: pytest
-        args: ["."]
+      - id: compile
+        name: compile
+        entry: python
+        args: ["-m", "py_compile"]
         language: system
+        types: [python]
+      - id: pytest
+        name: pytest+coverage
+        entry: pytest
+        args: ["--cov-fail-under=90", "--cov", "tests"]
+        language: system
+        types: [python]
+        pass_filenames: false
+        always_run: true
       - id: pylint
         name: pylint
         entry: pylint
@@ -19,7 +28,7 @@ repos:
         entry: black
         language: system
         types: [python]
-        args: [--check]
+        args: ["--check"]
       - id: mypy
         name: mypy
         entry: mypy
