@@ -5,6 +5,18 @@ Translated from https://github.com/igm-team/meaRtools/blob/master/meaRtools/R/bu
 
 
 def _calc_ibi(spikes: list[float], bursts: list[list[float]]) -> list[float | None]:
+    """
+    Utiliy function for computing Inter-Burst Intervals
+
+    Args:
+        spikes: list of spike times
+        bursts: list of burst each containing, start index, stop index, length & duration
+
+    Returns:
+        ibis: List of Inter-Burst Intervals
+
+    Raises:
+    """
     if len(bursts) < 2:
         # non IBIs
         return []
@@ -15,9 +27,6 @@ def _calc_ibi(spikes: list[float], bursts: list[list[float]]) -> list[float | No
     start_spikes: list[int] = [int(b[0]) - 1 for b in bursts[1:]]
     end_spikes: list[int] = [int(b) - 1 for b in burst_ends[:-1]]
 
-    # breakpoint()
-
-    # print(len(start_spikes) , len(end_spikes))
     assert len(start_spikes) == len(
         end_spikes
     ), "start_spikes and end_spikes need to be the same length"
